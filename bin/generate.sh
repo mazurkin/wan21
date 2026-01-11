@@ -19,14 +19,13 @@ MODEL_DIR="${PACKAGE_DIR}/models"
 declare -r MODEL_DIR
 
 # python settings
+export PYTHONPATH="${PACKAGE_DIR}/wan21"
 export PYTHONDONTWRITEBYTECODE=1
 export PYTHONUNBUFFERED=1
 
 # torch settings
 export PYTORCH_ALLOC_CONF=expandable_segments:True
 
-exec conda run --no-capture-output --live-stream --name wan21 --cwd "${PACKAGE_DIR}/wan21" \
-    python3 generate.py \
-        --ckpt_dir "${PACKAGE_DIR}/models/wan21" \
-        --size 1280*720 \
+exec conda run --no-capture-output --live-stream --name wan21 --cwd "${PACKAGE_DIR}" \
+    python3 wan21/generate.py \
         "$@"

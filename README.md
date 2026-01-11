@@ -52,8 +52,22 @@ $ export CUDA_VISIBLE_DEVICES=0
 ```
 
 ```shell
-# render video based on the prompt
-$ bin/wan21.sh \
-  --task t2v-14B \
-  --prompt 'cinematic video of the dark basement filled with the chemical laboratory equipment in spotlit, something is boiling in the big glass vials, the camera is going through the laboratory and then we see the actor Aaron Paul, the camera is coming closer to him, he is turning his face to the camera and yells «Data-science, bitch!» and then smiles wide'
+# render video based on the prompt only (Wan2.1-T2V-14B)
+$ bin/generate.sh \
+    --ckpt_dir "models/Wan2.1-T2V-14B" \
+    --task t2v-14B \
+    --size 1280*720 \
+    --prompt 'Two anthropomorphic cats in comfy boxing gear and bright gloves fight intensely on a spotlighted stage.'
 ```
+
+```shell
+# render video based on the prompt and image (Wan2.1-I2V-14B-480P)
+$ bin/generate.sh \
+    --ckpt_dir "models/Wan2.1-I2V-14B-480P" \
+    --task i2v-14B \
+    --size 1280*720 \
+    --image 'assets/aaron_paul.jpg' \
+    --prompt 'cinematic video of the dark basement filled with the chemical laboratory equipment in spotlit, something is boiling in the big glass vials, the camera is going through the laboratory and then we see the actor Aaron Paul, the camera is coming closer to him, he is turning his face to the camera and yells «Data-science, bitch!» and then smiles wide'
+```
+
+

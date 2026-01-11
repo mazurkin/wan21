@@ -63,7 +63,9 @@ env-remove:
 .PHONY: download-wan21
 download-wan21:
 	@conda run --no-capture-output --live-stream --name "$(CONDA_ENV_NAME)" \
-		hf download "Wan-AI/Wan2.1-T2V-14B" --local-dir "$(ROOT)/models/wan21"
+		hf download "Wan-AI/Wan2.1-T2V-14B" --local-dir "$(ROOT)/models/Wan2.1-T2V-14B"
+	@conda run --no-capture-output --live-stream --name "$(CONDA_ENV_NAME)" \
+		hf download "Wan-AI/Wan2.1-I2V-14B-480P" --local-dir "$(ROOT)/models/Wan2.1-I2V-14B-480P"
 
 # -----------------------------------------------------------------------------
 # example
@@ -73,7 +75,7 @@ download-wan21:
 example:
 	@conda run --no-capture-output --live-stream --name "$(CONDA_ENV_NAME)" --cwd "$(ROOT)/wan21" \
 		python generate.py \
-		 	--ckpt_dir "$(ROOT)/models/wan21" \
+		 	--ckpt_dir "$(ROOT)/models/Wan2.1-T2V-14B" \
 		 	--size 1280*720 \
 		 	--task t2v-14B \
 		 	--prompt "Two anthropomorphic cats in comfy boxing gear and bright gloves fight intensely on a spotlighted stage."
